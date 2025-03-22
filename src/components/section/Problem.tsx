@@ -14,22 +14,29 @@ gsap.registerPlugin(ScrollTrigger);
 
 const problems: Problem[] = [
   {
-    title: "Manque de données fiables",
+    title: "Limite d'acces",
     description:
-      "L'accès à des données précises est limité, ce qui complique l'analyse et la prise de décision.",
-    color: "#FF6B6B",
+      "Absence de navigation au clavier pour les personnes avec un handicap",
+
+    color: "#1e3a8a",
   },
   {
-    title: "Contraintes budgétaires",
+    title: "Difficulte de navigation",
     description:
-      "Les ressources financières limitées entravent la mise en œuvre de solutions adéquates.",
-    color: "#FFD93D",
+      "Certains boutons et champs de formulaires ne sont pas bien lisibles ou accessibles et manque d’alternatives pour les personnes ayant des difficultés cognitives.",
+    color: "#1e3a8a",
   },
   {
-    title: "Conditions environnementales",
+    title: "Interface complexe",
     description:
-      "Les variations climatiques rendent difficile la stabilité des projets à long terme.",
-    color: "#1B9C85",
+      "Trop d'éléments visuels, animations rapides, ou pop-ups peuvent gêner certaines personnes ayant des troubles cognitifs.",
+    color: "#1e3a8a",
+  },
+  {
+    title: "Securite",
+    description:
+      "Les captchas visuels sont une barrière pour les personnes malvoyantes.",
+    color: "#1e3a8a",
   },
 ];
 
@@ -78,15 +85,18 @@ export const ProblemSection: React.FC = () => {
     >
       <div
         ref={circleRef}
-        className="absolute top-[-50px] left-0 w-16 h-16 rounded-full bg-black z-0"
+        className="absolute top-[px] left-0 w-16 h-16 rounded-full bg-black z-0"
       />
-      <h2 className="text-3xl font-bold text-center mb-8">
-        Problèmes de l'Étude
-      </h2>
-      <div className="flex gap-4 z-10 justify-center items-center mr-[200px]">
-        {problems.map((problem, index) => (
-          <ProblemCard key={index} {...problem} />
-        ))}
+      <div className="text-center">
+        <h1 className="text-6xl md:text-9xl font-extrabold bg-gradient-to-r from-yellow-400 to-red-500 bg-clip-text text-transparent animate-pulse p-10">
+          Probleme ?
+          <br />
+        </h1>
+        <div className="flex gap-4 z-10 justify-center items-center mr-[200px]">
+          {problems.map((problem, index) => (
+            <ProblemCard key={index} {...problem} />
+          ))}
+        </div>
       </div>
     </div>
   );
