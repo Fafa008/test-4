@@ -60,6 +60,7 @@ function App() {
         label="Navigation programmatique"
         variant="secondary"
         useNavigateHook={true}
+        refreshOnRedirect={true}
       />
     </div>
   );

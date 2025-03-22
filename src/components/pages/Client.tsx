@@ -1,6 +1,6 @@
 import Webcam from "react-webcam";
 import { Brain, ArrowRight, Camera } from "lucide-react";
-import { section } from "framer-motion/client";
+import { RedirectButton } from "../Button";
 
 export interface Card {
   title: string;
@@ -115,13 +115,13 @@ function App(): JSX.Element {
             <Brain className="w-5 h-5" />
             <span>Entraîner</span>
           </button>
-          <button
-            onClick={handleRedirect}
+          <RedirectButton
+            to="/Detection"
+            label="Redirection"
+            useNavigateHook
+            refreshOnRedirect
             className="flex items-center gap-2 bg-green-600 text-white px-6 py-3 rounded-full hover:bg-green-700 transition-colors shadow-lg"
-          >
-            <ArrowRight className="w-5 h-5" />
-            <span>Rediriger</span>
-          </button>
+          ></RedirectButton>
         </div>
       </div>
     </section>
