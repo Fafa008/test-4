@@ -40,9 +40,8 @@ const Functionality: React.FC = () => {
   return (
     <div ref={containerRef} className="relative h-screen overflow-hidden">
       <div ref={scrollRef} className="flex w-[400vw] h-full">
-        <div className="box w-screen h-screen flex-shrink-0 bg-white flex items-center justify-center">
-          Slide 1
-        </div>
+        <div></div>
+        <div className="box w-screen h-screen flex-shrink-0 bg-white flex items-center justify-center"></div>
         <div className="box w-screen h-screen flex-shrink-0 bg-green-500 flex items-center justify-center">
           Slide 2
         </div>
