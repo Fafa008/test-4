@@ -6,6 +6,7 @@ import HorizontalScroll from "./components/Horizontal.tsx";
 import { Section } from "./components/section/section.tsx";
 import { InfiniteScroll } from "./components/InfinitScroll.tsx";
 import { Star } from "lucide-react";
+import FooterPage from "./components/Footer.tsx";
 
 function App() {
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -83,7 +84,7 @@ function App() {
         5
       </section>
       <section className="h-screen w-full bg-orange-500 dark:bg-orange-900">
-        6
+        <FooterPage />
       </section>
     </>
   );
