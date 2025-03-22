@@ -1,6 +1,6 @@
 import Webcam from "react-webcam";
 import { Brain, ArrowRight, Camera } from "lucide-react";
-import { RedirectButton } from "../Button";
+import { RedirectButton } from "../ui/Button";
 
 export interface Card {
   title: string;

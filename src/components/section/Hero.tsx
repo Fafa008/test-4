@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, Variants } from "framer-motion";
-import { RedirectButton } from "./Button";
+import { RedirectButton } from "../ui/Button";
 function App() {
   const [mousePosition, setMousePosition] = useState<{ x: number; y: number }>({
     x: 0,

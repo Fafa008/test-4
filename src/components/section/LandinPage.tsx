@@ -4,9 +4,13 @@ import Lenis from "@studio-freight/lenis";
 import Hero from "./Hero";
 import HorizontalScroll from "./Horizontal.tsx";
 
-import { Section } from "./section/Section.tsx";
+import { Section } from "./Section.tsx";
 import NavBar from "./NavBar.tsx";
-import DarkModeButton from "./DarkModeButton";
+import DarkModeButton from "../ui/DarkModeButton.tsx";
+import NounoursFooterWithText from "./Footer.tsx";
+import Functionality from "./Functionality";
+import Apropo from "./Apropo.tsx";
+import GetInTouch from "./GetInTouch.tsx";
 
 const LandinPage = () => {
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -55,15 +59,16 @@ const LandinPage = () => {
       <Hero />
       <Section color="bg-green-500" title="Section 2" />
       <HorizontalScroll />
-      <section className="h-screen w-full bg-green-500 dark:bg-green-900">
+      <Functionality className="h-screen w-full bg-green-500 dark:bg-green-900">
         4
-      </section>
-      <section className="h-screen w-full bg-purple-500 dark:bg-purple-900">
+      </Functionality>
+      <Apropo className="h-screen w-full bg-purple-500 dark:bg-purple-900">
         5
-      </section>
-      <section className="h-screen w-full bg-orange-500 dark:bg-orange-900">
-        footer
-      </section>
+      </Apropo>
+      <GetInTouch className="h-screen w-full bg-purple-500 dark:bg-purple-900">
+        5
+      </GetInTouch>
+      <NounoursFooterWithText />
       <DarkModeButton />
     </>
   );
