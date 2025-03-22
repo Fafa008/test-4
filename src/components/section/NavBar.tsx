@@ -97,7 +97,7 @@ export default function Navbar() {
       {/* Mobile Menu */}
       <motion.div
         id="navbar-hamburger"
-        className={`absolute w-full transition-all duration-700 ease-out bg-black z-50 overflow-hidden ${
+        className={`absolute w-full transition-all duration-700 ease-out bg-blue-900 z-50 overflow-hidden ${
           isOpen ? "max-h-screen py-4" : "max-h-0"
         }`}
       >
@@ -112,9 +112,29 @@ export default function Navbar() {
               y: { duration: 0.7, ease: "easeOut" },
             }}
           >
-            <h1 className="text-xl md:text-2xl font-bold text-white mt-6 md:mt-11 font-anton">
-              Travail <br /> Services <br /> Environ
+            <h1 className="text-xl md:text-2xl font-bold text-white mt-6 md:mt-11 font-anton space-y-2">
+              <a
+                href="/about"
+                className="hover:text-yellow-400 transition duration-300"
+              >
+                A Propos
+              </a>{" "}
+              <br />
+              <a
+                href="/features"
+                className="hover:text-yellow-400 transition duration-300"
+              >
+                Fonctionnalités
+              </a>{" "}
+              <br />
+              <a
+                href="/issues"
+                className="hover:text-yellow-400 transition duration-300"
+              >
+                Problème
+              </a>
             </h1>
+
             <video
               className="w-full md:w-96 h-auto rounded-lg mt-4"
               autoPlay
