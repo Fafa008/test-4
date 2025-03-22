@@ -58,7 +58,6 @@ const LandinPage = () => {
       <Hero />
       <ProblemSection />
       <Functionality />
-      <Apropo />
       <GetInTouch />
       <NounoursFooterWithText />
       <DarkModeButton />

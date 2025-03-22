@@ -3,11 +3,9 @@ import React from "react";
 const GetInTouch: React.FC = () => {
   return (
     <>
-      <div className="h-screen w-full bg-purple-500 dark:bg-purple-900 p-8">
-        <h1 className="text-white text-6xl text-center mb-12">Get In Touch</h1>
-
+      <div className="h-screen w-full bg-blue-500 dark:bg-purple-900 p-8">
         {/* Card container */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 w-[100%] h-[100%] sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
           {/* Card 1 */}
           <div className="bg-white dark:bg-purple-800 text-purple-500 dark:text-white rounded-lg shadow-lg overflow-hidden">
             <img
@@ -103,7 +101,6 @@ const GetInTouch: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className="h-screen w-full bg-purple-500 dark:bg-purple-900"></div>
     </>
   );
 };

@@ -75,13 +75,13 @@ const Functionality: React.FC = () => {
           <TextCard />
         </div>
         <div className="box w-screen h-screen flex-shrink-0 bg-green-500 flex items-center justify-center">
-          Slide 2
+          <TextCard />
         </div>
         <div className="box w-screen h-screen flex-shrink-0 bg-red-500 flex items-center justify-center">
-          Slide 3
+          <TextCard />
         </div>
         <div className="box w-screen h-screen flex-shrink-0 bg-yellow-500 flex items-center justify-center">
-          Slide 4
+          <TextCard />
         </div>
       </div>
     </div>
