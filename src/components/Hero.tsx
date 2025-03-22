@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
 import { motion, Variants } from "framer-motion";
+<<<<<<< HEAD
 import { h1 } from "framer-motion/client";
 import RoundedSliderButton from "./btn";
 import ConnectButton from "./btn";
 
+=======
+import { RedirectButton } from "./Button";
+>>>>>>> 8a01996cfa1532e9449d2098dc10cc88af718336
 function App() {
   const [mousePosition, setMousePosition] = useState<{ x: number; y: number }>({
     x: 0,
@@ -45,6 +49,7 @@ function App() {
   const textLeave = () => setCursorVariant("default");
 
   return (
+<<<<<<< HEAD
     <>
       <div className="fixed inset-0 -z-10 min-h-screen w-screen">
         <video
@@ -85,6 +90,29 @@ function App() {
         />
       </div>
     </>
+=======
+    <div className="flex flex-col gap-5 items-center justify-center h-screen bg-yellow-400">
+      <h1
+        onMouseEnter={textEnter}
+        onMouseLeave={textLeave}
+        className="text-9xl font-bold"
+      >
+        Hello World
+      </h1>
+      <motion.div
+        className="w-8 h-8 bg-black rounded-full fixed top-0 left-0 pointer-events-none"
+        variants={variants}
+        animate={cursorVariant}
+      />
+      <RedirectButton
+        to="/Client"
+        label="Navigation programmatique"
+        variant="secondary"
+        useNavigateHook={true}
+        refreshOnRedirect={true}
+      />
+    </div>
+>>>>>>> 8a01996cfa1532e9449d2098dc10cc88af718336
   );
 }
 
