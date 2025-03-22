@@ -3,7 +3,7 @@ import gsap from "gsap";
 import Lenis from "@studio-freight/lenis";
 import Hero from "./components/section/Hero.tsx";
 
-import ProblemSection, { Problem } from "./components/section/Problem.tsx";
+import ProblemSection from "./components/section/Problem.tsx";
 import NavBar from "./components/section/NavBar.tsx";
 import DarkModeButton from "./components/ui/DarkModeButton.tsx";
 import NounoursFooterWithText from "./components/section/Footer.tsx";

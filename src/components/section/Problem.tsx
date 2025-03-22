@@ -78,12 +78,12 @@ export const ProblemSection: React.FC = () => {
     >
       <div
         ref={circleRef}
-        className="absolute top-[-50px] left-0 w-16 h-16 rounded-full bg-red-500 z-0"
+        className="absolute top-[-50px] left-0 w-16 h-16 rounded-full bg-black z-0"
       />
       <h2 className="text-3xl font-bold text-center mb-8">
         Problèmes de l'Étude
       </h2>
-      <div className="flex gap-4 z-10 justify-center bg-white">
+      <div className="flex gap-4 z-10 justify-center items-center mr-[200px]">
         {problems.map((problem, index) => (
           <ProblemCard key={index} {...problem} />
         ))}
