@@ -3,7 +3,7 @@ import gsap from "gsap";
 import Lenis from "@studio-freight/lenis";
 import Hero from "./components/section/Hero.tsx";
 
-import { Problem } from "./components/section/Problem.tsx";
+import ProblemSection, { Problem } from "./components/section/Problem.tsx";
 import NavBar from "./components/section/NavBar.tsx";
 import DarkModeButton from "./components/ui/DarkModeButton.tsx";
 import NounoursFooterWithText from "./components/section/Footer.tsx";
@@ -56,7 +56,7 @@ const LandinPage = () => {
     <>
       <NavBar />
       <Hero />
-      <Problem color="bg-green-500" title="Section 2" />
+      <ProblemSection />
       <Functionality />
       <Apropo />
       <GetInTouch />

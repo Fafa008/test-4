@@ -1,17 +1,42 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { motion, useScroll } from "framer-motion";
+import ProblemCard from "../Card/ProblemCard";
+
+interface Problem {
+  title: string;
+  description: string;
+  color: string;
+}
 
 gsap.registerPlugin(ScrollTrigger);
 
-interface SectionProps {
-  color: string;
-  title: string;
-}
+const problems: Problem[] = [
+  {
+    title: "Manque de données fiables",
+    description:
+      "L'accès à des données précises est limité, ce qui complique l'analyse et la prise de décision.",
+    color: "#FF6B6B",
+  },
+  {
+    title: "Contraintes budgétaires",
+    description:
+      "Les ressources financières limitées entravent la mise en œuvre de solutions adéquates.",
+    color: "#FFD93D",
+  },
+  {
+    title: "Conditions environnementales",
+    description:
+      "Les variations climatiques rendent difficile la stabilité des projets à long terme.",
+    color: "#1B9C85",
+  },
+];
 
-export function Problem({ color, title }: SectionProps) {
+export const ProblemSection: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const circleRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll();
 
   useEffect(() => {
     if (!sectionRef.current || !circleRef.current) return;
@@ -28,9 +53,10 @@ export function Problem({ color, title }: SectionProps) {
       scrollTrigger: {
         trigger: section,
         start: "top bottom",
-        end: "top 20%",
+        end: "top top",
         scrub: 1,
         toggleActions: "play none none reverse",
+        anticipatePin: 1,
       },
     });
 
@@ -46,12 +72,24 @@ export function Problem({ color, title }: SectionProps) {
   }, []);
 
   return (
-    <div ref={sectionRef} className="sticky bg-white h-screen overflow-hidden">
+    <div
+      ref={sectionRef}
+      className="relative bg-white h-screen overflow-hidden flex items-center justify-center"
+    >
       <div
         ref={circleRef}
-        className={`bg-red-500 absolute top-[-50px] left-0 w-16 h-16 rounded-full ${color}`}
+        className="absolute top-[-50px] left-0 w-16 h-16 rounded-full bg-red-500 z-0"
       />
-      <div className="relative z-10 h-full flex items-center justify-center"></div>
+      <h2 className="text-3xl font-bold text-center mb-8">
+        Problèmes de l'Étude
+      </h2>
+      <div className="flex gap-4 z-10 justify-center bg-white">
+        {problems.map((problem, index) => (
+          <ProblemCard key={index} {...problem} />
+        ))}
+      </div>
     </div>
   );
-}
+};
+
+export default ProblemSection;
