@@ -28,9 +28,9 @@ function App() {
       width: 220,
       x: mousePosition.x - 60,
       y: mousePosition.y - 60,
-      backgroundColor: "#FACC15",
+      backgroundColor: "#0a0a0a",
       mixBlendMode: "difference",
-      boxShadow: "0 0 20px rgba(250, 204, 21, 0.5)",
+      boxShadow: "0 0 20px rgba(21, 250, 52, 0.5)",
       transition: { type: "spring", stiffness: 200 },
     },
   };
