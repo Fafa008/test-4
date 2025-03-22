@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import { motion, Variants } from "framer-motion";
+import { h1 } from "framer-motion/client";
+import RoundedSliderButton from "./btn";
+import ConnectButton from "./btn";
 
 function App() {
   const [mousePosition, setMousePosition] = useState<{ x: number; y: number }>({
@@ -42,20 +45,46 @@ function App() {
   const textLeave = () => setCursorVariant("default");
 
   return (
-    <div className="flex items-center justify-center h-screen bg-yellow-400">
-      <h1
-        onMouseEnter={textEnter}
-        onMouseLeave={textLeave}
-        className="text-9xl font-bold"
-      >
-        Hello World
-      </h1>
-      <motion.div
-        className="w-8 h-8 bg-black rounded-full fixed top-0 left-0 pointer-events-none"
-        variants={variants}
-        animate={cursorVariant}
-      />
-    </div>
+    <>
+      <div className="fixed inset-0 -z-10 min-h-screen w-screen">
+        <video
+          className="absolute top-0 left-0 w-full h-full object-cover"
+          autoPlay
+          loop
+          muted
+        >
+          <source src="/assets/img/background.mp4" type="video/mp4" />
+          Votre navigateur ne supporte pas les vidéos HTML5.
+        </video>
+      </div>
+
+      <div className="relative z-10 flex min-h-screen items-center justify-between pl-10 pr-10 text-white text-start">
+        {/* Contenu à gauche */}
+        <div>
+          <h1 className="text-4xl font-bold">Bienvenu dans L'application</h1>
+          <h1
+            onMouseEnter={textEnter}
+            onMouseLeave={textLeave}
+            className="text-9xl font-bold"
+          >
+            SING ALL
+          </h1>
+          <div className="mt-6">
+            <ConnectButton />
+          </div>
+        </div>
+
+        {/* Image à droite */}
+        <div className="w-1/2 text-end"></div>
+
+        {/* Curseur personnalisé */}
+        <motion.div
+          className="w-8 h-8 bg-black rounded-full fixed top-0 left-0 pointer-events-none"
+          variants={variants}
+          animate={cursorVariant}
+        />
+      </div>
+    </>
   );
 }
 
