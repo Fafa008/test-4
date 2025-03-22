@@ -1,8 +1,9 @@
-import React, { useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { motion, useScroll } from "framer-motion";
+import { motion } from "framer-motion";
 import ProblemCard from "../Card/ProblemCard";
+import { useScroll } from "framer-motion";
 
 interface Problem {
   title: string;
@@ -17,7 +18,6 @@ const problems: Problem[] = [
     title: "Limite d'acces",
     description:
       "Absence de navigation au clavier pour les personnes avec un handicap",
-
     color: "#1e3a8a",
   },
   {
@@ -44,6 +44,7 @@ export const ProblemSection: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const circleRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll();
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   useEffect(() => {
     if (!sectionRef.current || !circleRef.current) return;
@@ -89,12 +90,34 @@ export const ProblemSection: React.FC = () => {
       />
       <div className="text-center">
         <h1 className="text-6xl md:text-9xl font-extrabold bg-gradient-to-r from-yellow-400 to-red-500 bg-clip-text text-transparent animate-pulse p-10">
-          Probleme ?
-          <br />
+          Probleme ? <br />
         </h1>
         <div className="flex gap-4 z-10 justify-center items-center mr-[200px]">
           {problems.map((problem, index) => (
-            <ProblemCard key={index} {...problem} />
+            <motion.div
+              key={index}
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
+              className="w-[300px] h-[300px] relative"
+            >
+              {/* Effect of blur for other cards */}
+              <motion.div
+                className="absolute inset-0"
+                style={{
+                  filter:
+                    hoveredIndex === null || hoveredIndex === index
+                      ? "none"
+                      : "blur(5px)",
+                  transition: "filter 0.3s ease",
+                }}
+              />
+              {/* Problem card */}
+              <ProblemCard
+                title={problem.title}
+                description={problem.description}
+                color={problem.color}
+              />
+            </motion.div>
           ))}
         </div>
       </div>
