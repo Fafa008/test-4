@@ -44,9 +44,9 @@ function App() {
 
   return (
     <>
-      <div className="static inset-0 -z-10 min-h-screen w-screen">
+      <div className="fixed inset-0 -z-10 min-h-screen w-screen">
         <video
-          className="top-0 left-0 w-full h-full object-cover"
+          className="relative top-0 left-0 w-full h-full object-cover"
           autoPlay
           loop
           muted

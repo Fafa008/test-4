@@ -46,14 +46,12 @@ export function Problem({ color, title }: SectionProps) {
   }, []);
 
   return (
-    <div ref={sectionRef} className="relative h-screen overflow-hidden">
+    <div ref={sectionRef} className="sticky bg-white h-screen overflow-hidden">
       <div
         ref={circleRef}
-        className={`absolute top-[-50px] left-0 w-16 h-16 rounded-full ${color}`}
+        className={`bg-red-500 absolute top-[-50px] left-0 w-16 h-16 rounded-full ${color}`}
       />
-      <div className="relative z-10 h-full flex items-center justify-center">
-        <h2 className="text-4xl font-bold text-white">{title}</h2>
-      </div>
+      <div className="relative z-10 h-full flex items-center justify-center"></div>
     </div>
   );
 }
