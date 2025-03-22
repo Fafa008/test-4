@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { Route, Routes } from "react-router-dom";
 import Client from "./components/pages/Client.tsx";
 import LandinPage from "./components/LandinPage.tsx";
