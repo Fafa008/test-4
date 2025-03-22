@@ -30,7 +30,7 @@ function App() {
       y: mousePosition.y - 60,
       backgroundColor: "#0a0a0a",
       mixBlendMode: "difference",
-      boxShadow: "0 0 20px rgba(21, 250, 52, 0.5)",
+      boxShadow: "0 0 20px rgba(21, 44, 250, 0.5)",
       transition: { type: "spring", stiffness: 200 },
     },
   };
