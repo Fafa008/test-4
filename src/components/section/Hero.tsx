@@ -1,8 +1,5 @@
 import { useEffect, useState } from "react";
 import { motion, Variants } from "framer-motion";
-import { RedirectButton } from "../ui/Button";
-
-import { h1 } from "framer-motion/client";
 import ConnectButton from "../ui/btn";
 
 function App() {
@@ -37,7 +34,7 @@ function App() {
       width: 150,
       x: mousePosition.x - 75,
       y: mousePosition.y - 75,
-      backgroundColor: "yellow",
+      backgroundColor: "white",
       mixBlendMode: "difference" as const,
     },
   };
@@ -47,9 +44,9 @@ function App() {
 
   return (
     <>
-      <div className="fixed inset-0 -z-10 min-h-screen w-screen">
+      <div className="static inset-0 -z-10 min-h-screen w-screen">
         <video
-          className="absolute top-0 left-0 w-full h-full object-cover"
+          className="top-0 left-0 w-full h-full object-cover"
           autoPlay
           loop
           muted
@@ -59,7 +56,7 @@ function App() {
         </video>
       </div>
 
-      <div className="relative z-10 flex min-h-screen items-center justify-between pl-10 pr-10 text-white text-start">
+      <div className="relative z-10 flex flex-1 min-h-screen items-center justify-center pl-10 text-white text-start">
         {/* Contenu à gauche */}
         <div>
           <h1 className="text-4xl font-bold">Bienvenu dans L'application</h1>

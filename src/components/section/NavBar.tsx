@@ -21,7 +21,7 @@ export default function Navbar() {
 
   return (
     <motion.nav
-      className="bg-black dark:bg-gray-900"
+      className="bg-transparent dark:bg-gray-900"
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
@@ -97,8 +97,8 @@ export default function Navbar() {
       {/* Mobile Menu */}
       <motion.div
         id="navbar-hamburger"
-        className={`overflow-hidden w-full transition-all duration-700 ease-out ${
-          isOpen ? "max-h-screen" : "max-h-0"
+        className={`overflow-hidden w-full transition-all duration-700 ease-out bg-black ${
+          isOpen ? "max-h-screen" : "max-h-0 bg-black"
         }`}
       >
         <div className="grid grid-cols-2 grid-rows-5 gap-4 p-4 place-items-center">

@@ -5,8 +5,12 @@ interface ApropoProps {
   className?: string;
 }
 
-const Apropo: React.FC<ApropoProps> = ({ children, className }) => {
-  return <div className={className}>{children}</div>;
+const Apropo: React.FC<ApropoProps> = ({}) => {
+  return (
+    <div className="h-screen w-full bg-white dark:bg-purple-900">
+      <h1 className="text-black text-6xl"></h1>
+    </div>
+  );
 };
 
 export default Apropo;
