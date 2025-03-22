@@ -10,6 +10,7 @@ import NounoursFooterWithText from "./components/section/Footer.tsx";
 import Functionality from "./components/section/Functionality.tsx";
 import Apropo from "./components/section/Apropo.tsx";
 import GetInTouch from "./components/section/GetInTouch.tsx";
+import Line from "./components/ui/Line.tsx";
 
 const LandinPage = () => {
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -59,8 +60,8 @@ const LandinPage = () => {
       <ProblemSection />
       <Functionality />
       <GetInTouch />
+      <Line />
       <NounoursFooterWithText />
-      <DarkModeButton />
     </>
   );
 };
