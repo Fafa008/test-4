@@ -21,11 +21,11 @@ function App() {
     default: {
       x: mousePosition.x - 16,
       y: mousePosition.y - 16,
-      transition: { type: "spring", stiffness: 200 },
+      transition: { type: "ease", stiffness: 200 },
     },
     text: {
-      height: 120,
-      width: 120,
+      height: 220,
+      width: 220,
       x: mousePosition.x - 60,
       y: mousePosition.y - 60,
       backgroundColor: "#FACC15",
@@ -86,10 +86,6 @@ function App() {
             <ConnectButton />
           </motion.div>
         </div>
-
-        {/* 🔹 Image à droite */}
-
-        {/* 🔹 Curseur personnalisé */}
         <motion.div
           className="w-8 h-8 bg-black rounded-full fixed top-0 left-0 pointer-events-none shadow-lg"
           variants={variants}

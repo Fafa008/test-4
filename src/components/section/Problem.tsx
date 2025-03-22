@@ -61,7 +61,7 @@ export const ProblemSection: React.FC = () => {
         trigger: section,
         start: "top bottom",
         end: "top top",
-        scrub: 1,
+        scrub: 2,
         toggleActions: "play none none reverse",
         anticipatePin: 1,
       },
