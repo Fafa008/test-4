@@ -1,9 +1,10 @@
+
 const NavBar = ({
   brand = "Mon Site",
   links = [
     { label: "Accueil", href: "/" },
     { label: "À propos", href: "/about" },
-    { label: "Contact", href: "/contact" },
+    { label: "detection", href: "./pages/Client.tsx" },
   ],
 }) => {
   return (

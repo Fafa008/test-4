@@ -3,9 +3,12 @@ import gsap from "gsap";
 import Lenis from "@studio-freight/lenis";
 import Hero from "./components/Hero.tsx";
 import HorizontalScroll from "./components/Horizontal.tsx";
-import { Section } from "./components/section/section.tsx";
-import { InfiniteScroll } from "./components/InfinitScroll.tsx";
-import { Star } from "lucide-react";
+
+import { Section } from "./components/section/Section.tsx";
+import DarkModeButton from "./components/DarkModeButton.tsx";
+import NavBar from "./components/NavBar.tsx";
+import { Route, Routes } from "react-router-dom";
+import Client from "./components/pages/Client.tsx";
 
 function App() {
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -48,43 +51,25 @@ function App() {
       lenis.destroy();
     };
   }, []);
-
-  const items = Array.from({ length: 5 }, (_, i) => (
-    <div
-      key={i}
-      className="inline-flex items-center justify-center px-8 py-4 mx-4 bg-white rounded-lg shadow-md"
-    >
-      <Star className="w-6 h-6 mr-2 text-yellow-500" />
-      <span className="text-lg font-semibold">Item {i + 1}</span>
-    </div>
-  ));
-
   return (
     <>
+      <Routes>
+        <Route path="/Client" element={<Client />} />
+      </Routes>
+      <NavBar />
       <Hero />
       <Section color="bg-green-500" title="Section 2" />
       <HorizontalScroll />
       <section className="h-screen w-full bg-green-500 dark:bg-green-900">
-        <InfiniteScroll direction="left" speed="fast">
-          {Array.from({ length: 8 }).map((_, index) => (
-            <div
-              key={index}
-              className="flex-shrink-0 px-4 py-2 bg-gray-200 rounded-lg"
-            >
-              Item {index + 1}
-            </div>
-          ))}
-        </InfiniteScroll>
-      </section>
-      <section className="h-screen w-full bg-yellow-500 dark:bg-yellow-900">
         4
       </section>
       <section className="h-screen w-full bg-purple-500 dark:bg-purple-900">
         5
       </section>
       <section className="h-screen w-full bg-orange-500 dark:bg-orange-900">
-        6
+        footer
       </section>
+      <DarkModeButton />
     </>
   );
 }

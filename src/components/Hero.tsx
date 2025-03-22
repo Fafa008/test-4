@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, Variants } from "framer-motion";
-
+import { RedirectButton } from "./Button";
 function App() {
   const [mousePosition, setMousePosition] = useState<{ x: number; y: number }>({
     x: 0,
@@ -42,7 +42,7 @@ function App() {
   const textLeave = () => setCursorVariant("default");
 
   return (
-    <div className="flex items-center justify-center h-screen bg-yellow-400">
+    <div className="flex flex-col gap-5 items-center justify-center h-screen bg-yellow-400">
       <h1
         onMouseEnter={textEnter}
         onMouseLeave={textLeave}
@@ -54,6 +54,12 @@ function App() {
         className="w-8 h-8 bg-black rounded-full fixed top-0 left-0 pointer-events-none"
         variants={variants}
         animate={cursorVariant}
+      />
+      <RedirectButton
+        to="/Client"
+        label="Navigation programmatique"
+        variant="secondary"
+        useNavigateHook={true}
       />
     </div>
   );
