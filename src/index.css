@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --font-primary: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-primary: "Inter", system-ui, -apple-system, sans-serif;
   --background-light: #ffffff;
   --background-dark: #1a1a1a;
   --text-light: #333333;
@@ -28,11 +28,11 @@
 @layer components {
   .is-open {
     clip-path: circle(200% at 100% 100%) !important;
-    transition: clip-path 1.3s cubic-bezier(1,-0.01,.01,.99) !important;
+    transition: clip-path 1.3s cubic-bezier(1, -0.01, 0.01, 0.99) !important;
   }
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 
 body {
   font-family: var(--font-primary);
