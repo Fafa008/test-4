@@ -97,13 +97,14 @@ export default function Navbar() {
       {/* Mobile Menu */}
       <motion.div
         id="navbar-hamburger"
-        className={`overflow-hidden w-full transition-all duration-700 ease-out bg-black ${
-          isOpen ? "max-h-screen" : "max-h-0 bg-black"
+        className={`absolute w-full transition-all duration-700 ease-out bg-black z-50 overflow-hidden ${
+          isOpen ? "max-h-screen py-4" : "max-h-0"
         }`}
       >
-        <div className="grid grid-cols-2 grid-rows-5 gap-4 p-4 place-items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 place-items-center">
+          {/* Première colonne (texte + vidéo) */}
           <motion.div
-            className=""
+            className="text-center md:text-left"
             initial={{ opacity: 0, y: -50 }}
             animate={isOpen ? { opacity: 1, y: 0 } : { opacity: 0, y: -50 }}
             transition={{
@@ -111,28 +112,32 @@ export default function Navbar() {
               y: { duration: 0.7, ease: "easeOut" },
             }}
           >
-            <h1 className="text-2xl font-bold text-white mt-11 font-anton">
-              Travail
-              <br />
-              Services
-              <br />
-              Environ
+            <h1 className="text-xl md:text-2xl font-bold text-white mt-6 md:mt-11 font-anton">
+              Travail <br /> Services <br /> Environ
             </h1>
-            <video className="w-96 h-auto rounded-lg" autoPlay loop muted>
+            <video
+              className="w-full md:w-96 h-auto rounded-lg mt-4"
+              autoPlay
+              loop
+              muted
+            >
               <source src="/assets/img/videoplayback.webm" type="video/webm" />
               Votre navigateur ne supporte pas la vidéo.
             </video>
           </motion.div>
+
+          {/* Deuxième colonne (titre animé) */}
           <motion.h1
-            className="text-[120px] text-end font-bold text-white mt-11 font-anton flex flex-col space-y-2"
+            className="text-5xl md:text-[120px] text-center md:text-end font-bold text-white mt-6 md:mt-11 font-anton"
             initial={{ opacity: 0, y: -50 }}
             animate={isOpen ? { opacity: 1, y: 0 } : { opacity: 0, y: -50 }}
             transition={{
-              opacity: { duration: 0.6, delay: 0.8 },
-              y: { duration: 0.7, ease: "easeOut", delay: 0.8 },
+              opacity: { duration: 0.7 },
+              y: { duration: 0.7, ease: "easeOut" },
             }}
           >
-            <div className="flex items-center  space-x-2">
+            {/* "NOUN" avec animation */}
+            <div className="flex justify-center md:justify-end space-x-2">
               {"NOUN".split("").map((char, index) => (
                 <motion.span
                   key={index}
@@ -151,7 +156,9 @@ export default function Navbar() {
                 </motion.span>
               ))}
             </div>
-            <div className="flex space-x-2">
+
+            {/* "OURS" avec animation */}
+            <div className="flex justify-center md:justify-end space-x-2">
               {"OURS".split("").map((char, index) => (
                 <motion.span
                   key={index}
