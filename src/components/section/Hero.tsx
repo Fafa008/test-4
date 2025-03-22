@@ -50,11 +50,11 @@ function App() {
         </video>
 
         {/* Effet de fondu en bas */}
-        <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black to-transparent"></div>
+        <div className="absolute bottom-0 left-0 w-full h-32 from-black to-transparent"></div>
       </div>
 
       {/* 🔹 Contenu principal */}
-      <div className="relative z-10 flex flex-col md:flex-row h-screen items-center justify-between px-8 md:px-16 text-white">
+      <div className="relative z-10 flex flex-col md:flex-row h-screen items-center justify-center px-8 md:px-16 text-white">
         {/* Texte à gauche */}
         <div className="space-y-8 text-center md:text-left">
           <motion.h1
@@ -69,7 +69,7 @@ function App() {
           </motion.h1>
 
           <motion.h1
-            className="text-2xl md:text-4xl font-bold tracking-wide"
+            className="flex items-center justify-center text-2xl md:text-4xl font-bold tracking-wide"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
@@ -78,6 +78,7 @@ function App() {
           </motion.h1>
 
           <motion.div
+            className="flex items-center justify-center"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.6 }}
