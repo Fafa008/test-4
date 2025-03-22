@@ -37,7 +37,7 @@ function App() {
 
   return (
     <>
-      {/* Vidéo en arrière-plan (plus longue) */}
+      {/* 🔹 Vidéo en arrière-plan */}
       <div className="absolute top-0 left-0 w-full h-[109.5vh] -z-10 overflow-hidden">
         <video
           className="w-full h-full object-cover brightness-75"
@@ -45,7 +45,7 @@ function App() {
           loop
           muted
         >
-          <source src="/assets/img/background.mp4" type="video/mp4" />
+          <source src="/assets/img/Demo.mp4" type="video/mp4" />
           Votre navigateur ne supporte pas les vidéos HTML5.
         </video>
 
@@ -53,22 +53,23 @@ function App() {
         <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black to-transparent"></div>
       </div>
 
-      {/* Contenu principal */}
-      <div className="relative z-10 flex h-screen items-center justify-between px-16 text-white">
+      {/* 🔹 Contenu principal */}
+      <div className="relative z-10 flex flex-col md:flex-row h-screen items-center justify-between px-8 md:px-16 text-white">
         {/* Texte à gauche */}
-        <div className="space-y-8">
+        <div className="space-y-8 text-center md:text-left">
           <motion.h1
             onMouseEnter={() => setCursorVariant("text")}
             onMouseLeave={() => setCursorVariant("default")}
-            className="text-9xl font-extrabold bg-gradient-to-r from-yellow-400 to-red-500 bg-clip-text text-transparent animate-pulse"
+            className="text-6xl md:text-9xl font-extrabold bg-gradient-to-r from-yellow-400 to-red-500 bg-clip-text text-transparent animate-pulse"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.3 }}
           >
             SING ALL
           </motion.h1>
+
           <motion.h1
-            className="text-4xl font-bold tracking-wide"
+            className="text-2xl md:text-4xl font-bold tracking-wide"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
@@ -85,15 +86,15 @@ function App() {
           </motion.div>
         </div>
 
-        {/* Curseur personnalisé */}
+        {/* 🔹 Image à droite */}
+
+        {/* 🔹 Curseur personnalisé */}
         <motion.div
           className="w-8 h-8 bg-black rounded-full fixed top-0 left-0 pointer-events-none shadow-lg"
           variants={variants}
           animate={cursorVariant}
         />
       </div>
-
-      {/* Contenu après la vidéo */}
     </>
   );
 }
