@@ -117,7 +117,7 @@ export default function Navbar() {
                 href="/about"
                 className="hover:text-yellow-400 transition duration-300"
               >
-                A Propos
+                Equipe
               </a>{" "}
               <br />
               <a

@@ -1,12 +1,16 @@
-import type React from "react"
+import type React from "react";
 
 interface ProblemCardProps {
-  title: string
-  description: string
-  color: string
+  title: string;
+  description: string;
+  color: string;
 }
 
-const ProblemCard: React.FC<ProblemCardProps> = ({ title, description, color }) => {
+const ProblemCard: React.FC<ProblemCardProps> = ({
+  title,
+  description,
+  color,
+}) => {
   return (
     <div
       className="bg-white rounded-xl shadow-lg overflow-hidden h-full flex flex-col transition-all duration-300 ease-in-out hover:shadow-xl border border-gray-100"
@@ -22,8 +26,7 @@ const ProblemCard: React.FC<ProblemCardProps> = ({ title, description, color }) 
         <div className="w-12 h-1 bg-blue-900 rounded-full"></div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ProblemCard
-
+export default ProblemCard;
