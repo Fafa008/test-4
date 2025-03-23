@@ -5,7 +5,6 @@ import Hero from "./components/section/Hero.tsx";
 
 import ProblemSection from "./components/section/Problem.tsx";
 import NavBar from "./components/section/NavBar.tsx";
-import DarkModeButton from "./components/ui/DarkModeButton.tsx";
 import NounoursFooterWithText from "./components/section/Footer.tsx";
 import Functionality from "./components/section/Functionality.tsx";
 import Apropo from "./components/section/Apropo.tsx";
@@ -59,7 +58,6 @@ const LandinPage = () => {
       <Hero />
       <ProblemSection />
       <Functionality />
-      <GetInTouch />
       <Line />
       <NounoursFooterWithText />
     </>
