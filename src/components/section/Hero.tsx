@@ -61,7 +61,7 @@ function App() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.3 }}
           >
-            SING ALL
+            SIGN ALL
           </motion.h1>
 
           <motion.h1

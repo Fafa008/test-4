@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-scroll";
 
 export default function Navbar() {
   const [isDark, setIsDark] = useState(false);
@@ -29,7 +30,7 @@ export default function Navbar() {
       <div className="max-w-screen-xl flex items-center justify-between mx-auto p-4">
         {/* Logo */}
         <motion.div
-          className="flex text-2xl font-extrabold uppercase text-white font-Roboto"
+          className="flex text-2xl font-extrabold uppercase text-white text-3xl font-boldonse"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
@@ -55,42 +56,31 @@ export default function Navbar() {
         <button
           onClick={toggleMenu}
           type="button"
-          className="flex items-center justify-center space-x-2 p-2 text-white rounded-lg"
+          className="flex items-center justify-center p-3 rounded-lg bg-transparent text-white transition-all duration-300 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white"
+          aria-label="Toggle menu"
           aria-controls="navbar-hamburger"
           aria-expanded={isOpen}
         >
-          {/* Text */}
-
-          {/* Icon */}
           <motion.svg
-            className="w-5 h-5"
-            viewBox="0 0 20 20"
+            className="w-6 h-6"
+            viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             initial={{ rotate: 0 }}
             animate={{ rotate: isOpen ? 45 : 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
           >
-            {isOpen ? (
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M6 18L18 6M6 6L18 18"
-              />
-            ) : (
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M1 1h15M1 7h15M1 13h15"
-              />
-            )}
+            <motion.path
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d={isOpen ? "M6 18L18 6M6 6L18 18" : "M4 6h16M4 12h16M4 18h16"}
+              initial={{ opacity: 1 }}
+              animate={{ opacity: isOpen ? 0.8 : 1 }}
+              transition={{ duration: 0.3 }}
+            />
           </motion.svg>
-
-          <span className="sr-only">Toggle menu</span>
         </button>
       </div>
 
@@ -113,26 +103,32 @@ export default function Navbar() {
             }}
           >
             <h1 className="text-xl md:text-2xl font-bold text-white mt-6 md:mt-11 font-anton space-y-2">
-              <a
-                href="/about"
-                className="hover:text-yellow-400 transition duration-300"
+              <Link
+                to="equipe" // ID de la section cible
+                smooth={true} // Défilement fluide
+                duration={500} // Durée du défilement (en ms)
+                className="hover:text-yellow-400 transition duration-300 cursor-pointer"
               >
                 Equipe
-              </a>{" "}
+              </Link>{" "}
               <br />
-              <a
-                href="/features"
-                className="hover:text-yellow-400 transition duration-300"
+              <Link
+                to="fonctionnalites" // ID de la section cible
+                smooth={true} // Défilement fluide
+                duration={500} // Durée du défilement (en ms)
+                className="hover:text-yellow-400 transition duration-300 cursor-pointer"
               >
                 Fonctionnalités
-              </a>{" "}
+              </Link>{" "}
               <br />
-              <a
-                href="/issues"
-                className="hover:text-yellow-400 transition duration-300"
+              <Link
+                to="problems" // ID de la section cible
+                smooth={true} // Défilement fluide
+                duration={500} // Durée du défilement (en ms)
+                className="hover:text-yellow-400 transition duration-300 cursor-pointer"
               >
-                Problème
-              </a>
+                Problèmes
+              </Link>
             </h1>
 
             <video
