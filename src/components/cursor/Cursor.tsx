@@ -28,7 +28,7 @@ const Cursor = () => {
 
   return (
     <motion.div
-      className="bg-black h-[32px] w-[32px] rounded-full fixed top-0 left-0 "
+      className="bg-black h-[32px] w-[32px] rounded-full fixed top-0 left-0 pointer-events-none z-50"
       variants={variants}
       animate={variants}
     ></motion.div>
