@@ -2,28 +2,9 @@
 
 import type React from "react";
 
-import { useEffect, useRef, useState } from "react";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  useAnimation,
-  useInView,
-  AnimatePresence,
-} from "framer-motion";
-import {
-  Search,
-  Menu,
-  ShoppingCart,
-  X,
-  Eye,
-  Hand,
-  Brain,
-  Ear,
-  Settings,
-  VolumeX,
-  Volume2,
-} from "lucide-react";
+import { useEffect, useRef, useState, KeyboardEvent, ChangeEvent  } from "react"
+import { motion, useScroll, useTransform, useAnimation, useInView, AnimatePresence } from "framer-motion"
+import { Search, Menu, ShoppingCart, X, Eye, Hand, Brain, Ear, Settings, VolumeX, Volume2, Loader2, Mic } from "lucide-react"
 
 import { Button } from "../ui/button-ma";
 import { Card } from "../ui/card";
@@ -49,6 +30,11 @@ interface Product {
   rewardPoints: number;
   description?: string;
 }
+
+interface SpeechToTextResponse {
+    text: string;
+    confidence?: number;
+  }
 
 // Define disability types
 type DisabilityType = "none" | "visual" | "motor" | "cognitive" | "hearing";
@@ -384,6 +370,126 @@ export default function Dashboard() {
     }
   };
 
+
+//   recherche avec vocal
+
+const [searchTerm, setSearchTerm] = useState<string>('');
+  const [isRecording, setIsRecording] = useState<boolean>(false);
+  const [isProcessing, setIsProcessing] = useState<boolean>(false);
+  const mediaRecorderRef = useRef<MediaRecorder | null>(null);
+  const audioChunksRef = useRef<Blob[]>([]);
+
+  // Fonction pour démarrer l'enregistrement vocal
+  const startRecording = async (): Promise<void> => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      mediaRecorderRef.current = new MediaRecorder(stream);
+      audioChunksRef.current = [];
+      
+      mediaRecorderRef.current.ondataavailable = (event: BlobEvent): void => {
+        if (event.data.size > 0) {
+          audioChunksRef.current.push(event.data);
+        }
+      };
+
+      mediaRecorderRef.current.onstop = sendAudioToBackend;
+      
+      mediaRecorderRef.current.start();
+      setIsRecording(true);
+    } catch (error) {
+      console.error("Erreur lors de l'accès au microphone:", error);
+      alert("Impossible d'accéder au microphone. Veuillez vérifier les autorisations.");
+    }
+  };
+
+  // Fonction pour arrêter l'enregistrement
+  const stopRecording = (): void => {
+    if (mediaRecorderRef.current && isRecording) {
+      mediaRecorderRef.current.stop();
+      setIsRecording(false);
+      setIsProcessing(true);
+      
+      // Arrêter toutes les pistes audio
+      mediaRecorderRef.current.stream.getTracks().forEach(track => track.stop());
+    }
+  };
+
+  // Fonction pour envoyer l'audio au backend
+  const sendAudioToBackend = async (): Promise<void> => {
+    try {
+      const audioBlob = new Blob(audioChunksRef.current, { type: 'audio/webm' });
+      console.log(audioBlob)
+      const formData = new FormData();
+      formData.append('audio', audioBlob);
+
+      // Configuration Axios pour l'upload de fichier
+      const config = {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      };
+
+      // Envoi de l'audio au backend avec Axios
+      const response = await axios.post(
+        "", 
+        formData,
+        config
+      );
+      
+      // Traitement de la réponse
+      if (response.data && response.data.text) {
+        setSearchTerm(response.data.text);
+        // Vous pouvez déclencher la recherche automatiquement si vous le souhaitez
+        // handleSearch(response.data.text);
+      }
+    } catch (error) {
+      console.error("Erreur lors de l'envoi de l'audio:", error);
+      
+      // Gestion d'erreur plus détaillée avec Axios
+      if (axios.isAxiosError(error)) {
+        if (error.response) {
+          // La requête a été faite et le serveur a répondu avec un code d'état non 2xx
+          console.error("Erreur du serveur:", error.response.status, error.response.data);
+          alert(`Erreur du serveur: ${error.response.status}`);
+        } else if (error.request) {
+          // La requête a été faite mais aucune réponse n'a été reçue
+          console.error("Pas de réponse du serveur:", error.request);
+          alert("Pas de réponse du serveur. Vérifiez votre connexion.");
+        } else {
+          // Une erreur s'est produite lors de la configuration de la requête
+          console.error("Erreur de configuration:", error.message);
+          alert("Erreur lors de la configuration de la requête.");
+        }
+      } else {
+        // Erreur non-Axios
+        alert("Erreur lors du traitement de l'audio. Veuillez réessayer.");
+      }
+    } finally {
+      setIsProcessing(false);
+    }
+  };
+
+
+  // Fonction pour gérer la soumission du formulaire de recherche
+  const handleSearch = (text: string = searchTerm): void => {
+   
+      // Implémentation par défaut
+      console.log("Recherche de:", text);
+     
+  };
+
+  // Gestionnaire pour la touche Entrée
+  const handleKeyPress = (e: KeyboardEvent<HTMLInputElement>): void => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
+  // Gestionnaire pour le changement de valeur du champ
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
+    setSearchTerm(e.target.value);
+  };
+
   return (
     <div
       className={`min-h-screen bg-gradient-to-b from-blue-50 to-white dark:from-slate-900 dark:to-slate-800 dark:text-white ${
@@ -488,20 +594,40 @@ export default function Dashboard() {
           </div>
 
           <div className="hidden md:flex items-center gap-4 flex-1 max-w-md mx-4">
-            <div className="relative w-full">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-blue-400 dark:text-blue-300" />
-              <Input
-                placeholder="Rechercher des produits..."
-                className={`pl-10 bg-blue-50 dark:bg-slate-800 border-blue-100 dark:border-slate-700 focus-visible:ring-blue-300 dark:focus-visible:ring-blue-500 ${
-                  disabilityType === "visual"
-                    ? "text-lg py-6"
-                    : disabilityType === "motor"
-                    ? "py-5"
-                    : ""
-                }`}
-              />
-            </div>
-          </div>
+      <div className="relative w-full flex items-center">
+        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-blue-400 dark:text-blue-300" />
+        <Input 
+          value={searchTerm}
+          onChange={handleInputChange}
+          onKeyPress={handleKeyPress}
+          placeholder="Rechercher des produits..." 
+          className={`pl-10 pr-12 bg-blue-50 dark:bg-slate-800 border-blue-100 dark:border-slate-700 focus-visible:ring-blue-300 dark:focus-visible:ring-blue-500 ${
+            disabilityType === "visual" 
+              ? "text-lg py-6" 
+              : disabilityType === "motor" 
+                ? "py-5" 
+                : ""
+          }`}
+        />
+        <div className="absolute right-2 flex items-center">
+          {isProcessing ? (
+            <Loader2 className="h-5 w-5 text-blue-500 animate-spin" />
+          ) : (
+            <Button
+              type="button"
+              variant="ghost"
+              size="icon"
+              onClick={isRecording ? stopRecording : startRecording}
+              className={`h-8 w-8 p-1 rounded-full ${isRecording ? 'bg-red-100 text-red-500' : 'hover:bg-blue-100 text-blue-500'}`}
+              aria-label={isRecording ? "Arrêter l'enregistrement" : "Recherche vocale"}
+              title={isRecording ? "Arrêter l'enregistrement" : "Recherche vocale"}
+            >
+              <Mic className={`h-4 w-4 ${isRecording ? 'animate-pulse' : ''}`} />
+            </Button>
+          )}
+        </div>
+      </div>
+    </div>
 
           <div className="flex items-center gap-3">
             <Button
