@@ -2,12 +2,14 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import Lenis from "@studio-freight/lenis";
 import Hero from "./components/section/Hero.tsx";
+import GetInTouch from "./components/section/GetInTouch.tsx";
 
 import ProblemSection from "./components/section/Problem.tsx";
 import NavBar from "./components/section/NavBar.tsx";
 import NounoursFooterWithText from "./components/section/Footer.tsx";
 import Functionality from "./components/section/Functionality.tsx";
 import { VerticalScrollSection } from "./components/section/VerticalScrollSection.tsx";
+import TeamSection from "./components/section/GetInTouch.tsx";
 
 const verticalItems = [
   {
@@ -92,6 +94,7 @@ const LandinPage = () => {
       <VerticalScrollSection items={verticalItems} />
       <ProblemSection />
       <Functionality />
+      <GetInTouch />
       <NounoursFooterWithText />
     </>
   );

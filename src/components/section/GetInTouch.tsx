@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const TeamSection = () => {
-  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const teamMembers = [
     {
