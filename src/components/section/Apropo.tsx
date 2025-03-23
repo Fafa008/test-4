@@ -6,11 +6,7 @@ interface ApropoProps {
 }
 
 const Apropo: React.FC<ApropoProps> = ({}) => {
-  return (
-    <div className="h-screen w-full bg-white dark:bg-purple-900">
-      <h1 className="text-black text-6xl"></h1>
-    </div>
-  );
+  return <div className="h-screen w-full bg-white dark:bg-purple-900"></div>;
 };
 
 export default Apropo;
