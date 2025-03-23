@@ -91,7 +91,6 @@ const LandinPage = () => {
     <>
       <NavBar />
       <Hero />
-      <VerticalScrollSection items={verticalItems} />
       <ProblemSection />
       <Functionality />
       <GetInTouch />
