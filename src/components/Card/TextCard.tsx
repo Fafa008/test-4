@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import Line from "../ui/Line";
 
 const TextCard: React.FC = () => {
   const features = [
@@ -36,11 +37,7 @@ const TextCard: React.FC = () => {
       </div>
 
       {/* Vertical Line Separator */}
-      <div className="w-px h-[100%] relative mx-5">
-        <svg className="w-[100px] h-[100%] left-[-50px] absolute">
-          <path ref={path} className="stroke-[1px] stroke-white n"></path>
-        </svg>
-      </div>
+      <Line />
 
       {/* Left side - Features List */}
       <div className="flex-1 pr-8">

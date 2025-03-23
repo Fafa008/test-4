@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, Variants } from "framer-motion";
-import ConnectButton from "./btn";
+import ConnectButton from "../ui/btn";
 
 function App() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -37,7 +37,6 @@ function App() {
 
   return (
     <>
-      {/* 🔹 Vidéo en arrière-plan */}
       <div className="absolute top-0 left-0 w-full h-[109.5vh] -z-10 overflow-hidden">
         <video
           className="w-full h-full object-cover brightness-75"
@@ -49,13 +48,10 @@ function App() {
           Votre navigateur ne supporte pas les vidéos HTML5.
         </video>
 
-        {/* Effet de fondu en bas */}
         <div className="absolute bottom-0 left-0 w-full h-32 from-black to-transparent"></div>
       </div>
 
-      {/* 🔹 Contenu principal */}
       <div className="relative z-10 flex flex-col md:flex-row h-screen items-center justify-center px-8 md:px-16 text-white">
-        {/* Texte à gauche */}
         <div className="space-y-8 text-center md:text-left">
           <motion.h1
             onMouseEnter={() => setCursorVariant("text")}
@@ -83,7 +79,7 @@ function App() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <ConnectButton />
+            <ConnectButton to="/Dashboard" refreshOnRedirect={true} />
           </motion.div>
         </div>
         <motion.div
