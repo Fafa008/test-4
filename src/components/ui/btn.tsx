@@ -3,12 +3,14 @@ interface ConnectButtonProps {
   to: string;
   refreshOnRedirect?: boolean;
   useNavigateHook?: boolean;
+  hover?: boolean;
 }
 
 export default function ConnectButton({
   to,
   refreshOnRedirect = false,
   useNavigateHook = false,
+  hover = false,
 }: ConnectButtonProps) {
   const navigate = useNavigate();
   const handleClick = () => {
