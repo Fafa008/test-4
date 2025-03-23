@@ -3,7 +3,7 @@ import { Code, Brain, Server, Monitor } from "lucide-react";
 import { Link } from "react-scroll"; // Importation des icônes
 
 const TeamSection = () => {
-  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const teamMembers = [
     {

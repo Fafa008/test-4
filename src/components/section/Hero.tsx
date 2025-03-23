@@ -19,8 +19,8 @@ function App() {
 
   const variants: Variants = {
     default: {
-      x: mousePosition.x - 16,
-      y: mousePosition.y - 16,
+      x: mousePosition.x - 17,
+      y: mousePosition.y - 17,
       transition: { type: "ease", stiffness: 200 },
     },
     text: {
@@ -28,10 +28,20 @@ function App() {
       width: 220,
       x: mousePosition.x - 60,
       y: mousePosition.y - 60,
-      backgroundColor: "#0a0a0a",
-      mixBlendMode: "difference",
-      boxShadow: "0 0 20px rgba(21, 44, 250, 0.5)",
-      transition: { type: "spring", stiffness: 200 },
+      backgroundColor: "#fff",
+      mixBlendMode: "color",
+      transition: { type: "linear " },
+    },
+    background: {
+      height: 220,
+      width: 220,
+      x: mousePosition.x - 60,
+      y: mousePosition.y - 60,
+      backgroundColor: "#000",
+      mixBlendMode: "color",
+      transition: { type: "linear " },
+      overflow: "hidden",
+      zIndex: -1,
     },
   };
 
@@ -79,7 +89,7 @@ function App() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <ConnectButton to="/Dashboard" refreshOnRedirect={true} />
+            <ConnectButton to="/dashboard" refreshOnRedirect={true} />
           </motion.div>
         </div>
         <motion.div

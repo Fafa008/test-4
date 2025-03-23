@@ -9,6 +9,7 @@ import NavBar from "./components/section/NavBar.tsx";
 import NounoursFooterWithText from "./components/section/Footer.tsx";
 import Functionality from "./components/section/Functionality.tsx";
 import { VerticalScrollSection } from "./components/section/VerticalScrollSection.tsx";
+import TeamSection from "./components/section/GetInTouch.tsx";
 
 const verticalItems = [
   {
@@ -90,7 +91,6 @@ const LandinPage = () => {
     <>
       <NavBar />
       <Hero />
-      <VerticalScrollSection items={verticalItems} />
       <ProblemSection />
       <Functionality />
       <GetInTouch />
